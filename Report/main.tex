@@ -4,6 +4,8 @@
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb}
 \usepackage{url}
+\usepackage{enumitem}
+\usepackage{float}
 
 \begin{document}
 
@@ -17,9 +19,10 @@
 \maketitle
 
 \begin{abstract}
-This thesis proposes an evaluation of how modern machine learning (ML) algorithms handle attribute noise errors in input features while considering both performance and sustainability. We will assess multiple supervised algorithms using traditional evaluation metrics, such as accuracy and F1 score, alongside sustainability indicators, including energy consumption and CO2 emissions.
-    
-The study aims to identify algorithms that maintain strong performance while minimizing environmental impact under varying levels of noise. By integrating sustainability into ML evaluation, this research seeks to provide practical insights for developing efficient, noise-resilient models for ML-enabled systems.
+    Machine learning (ML) is widely used in this day and age, but its performance and efficiency heavily depend on data quality. Among different types of noise, attribute noise (errors in input features) can distort learning patterns, increase computational demands, and elevate energy consumption.
+
+    This case study proposes an evaluation of how modern machine learning (ML) algorithms handle attribute noise errors in input features while considering both performance and sustainability. We will assess multiple supervised algorithms using traditional evaluation metrics, such as accuracy and F1 score, alongside sustainability indicators, including energy consumption and CO2 emissions.
+    The study aims to identify algorithms that maintain strong performance while minimizing environmental impact under varying levels of noise. By integrating sustainability into ML evaluation, this research seeks to provide practical insights for developing efficient, noise-resilient models for ML-enabled systems.
 \end{abstract}
 
 
@@ -54,9 +57,13 @@ How do varying levels of attribute noise affect the performance and sustainabili
 \newline
 And three Sub-Questions:
 \begin{itemize}
-    \item 1. Do simpler models (e.g., Logistic Regression) degrade differently under noise compared to complex models?
-    \item 2. How does attribute noise influence energy consumption and CO2e emissions during model training for boolean classification?
-    \item 3. Which algorithm achieves the optimal trade-off between noise robustness and energy efficiency for boolean outcomes?
+     1. Do simpler models (e.g., Logistic Regression) degrade differently under noise compared to complex models?
+     \newline
+
+     2. How does attribute noise influence energy consumption and CO2e emissions during model training for boolean classification?
+     \newline
+
+     3. Which algorithm achieves the optimal trade-off between noise robustness and energy efficiency for boolean outcomes?
 \end{itemize}
 \newline 
 \newline
@@ -101,115 +108,106 @@ Atla, Tada, Sheng, and Singireddy \cite{atla2011} conducted a study comparing ho
 However, although each study addresses an important aspect of noise or sustainability, none provide a comprehensive evaluation that integrates traditional performance metrics with sustainability indicators (like energy consumption and CO2e emissions) across varying levels of attribute noise, while training the models. This gap underscores the significance and novelty of our proposed research. Our research aims to fill this gap by systematically assessing how different attribute noise levels affect both the effectiveness and the environmental impact of modern machine learning algorithms.
 
 
-\section*{III. RESEARCH METHODOLOGY}
+\section*{III. METHODOLOGY}
 This study evaluates the effectiveness of modern ML algorithms in handling different levels of attribute noise while also measuring their environmental impact. Traditional metrics such as accuracy, precision, F1 score, and recall will assess how well algorithms perform under noisy conditions. To extend this evaluation, CO2 equivalent (CO2e) emissions will be measured during each model's training using the Code Carbon package. By analyzing both performance and environmental impact across varying noise levels, this study aims to provide valuable insights into the trade-offs between model effectiveness and sustainability for different algorithms under different levels of attribute noise.
 \newline
 \newline
 Aim: To systematically evaluate how varying levels of attribute noise affect ML models' performance (via traditional metrics) and sustainability (via energy/CO2e measurements).
-\newline
 
-\subsection*{A. Research Questions and Hypotheses}
-Main Research Question:
-How do varying levels of attribute noise affect the performance and sustainability of supervised algorithms on boolean prediction values?
+\subsection*{A. Hypotheses}
+
 \newline
 \newline
-Sub-Questions:
-\begin{itemize}
-    \item 1. Do simpler models (e.g., Logistic Regression) degrade differently under noise compared to complex models?
-    \item 2. How does attribute noise influence energy consumption and CO2e emissions during model training for boolean classification?
-    \item 3. Which algorithm achieves the optimal trade-off between noise robustness and energy efficiency for boolean outcomes?
+\begin{itemize}[noitemsep, leftmargin=*]
+    H1: Higher attribute noise levels will reduce traditional performance metrics non-linearly across models.
+    \newline
+
+    H2: Energy consumption and CO2e emissions will increase with noise levels, but the rate will vary by each algorithm model.
+    \newline
+
+    H3: Models with higher noise robustness (smaller performance degradation) will exhibit higher energy efficiency.
 \end{itemize}
-\newline
-\newline
-Hypotheses:
-\begin{itemize}
-    \item H1: Higher attribute noise levels will reduce traditional performance metrics non-linearly across models.
-    \item H2: Energy consumption and CO2e emissions will increase with noise levels, but the rate will vary by each algorithm model.
-    \item H3: Models with higher noise robustness (smaller performance degradation) will exhibit higher energy efficiency.
-\end{itemize}
-\newline
-\newline
-\subsection*{B. Research Methodology}
-\textbf{Approach:} Comparative experimental study using supervised classification algorithms for target value of type boolean.
+
+\subsection*{B. Research design}
+
+\textbf{Approach:} This study adopts a comparative experimental approach to evaluate the impact of attribute noise on the performance and sustainability of modern supervised ML algorithms. Through a controlled experiment, varying levels of synthetic attribute noise are introduced into real-world datasets to simulate data corruption. The goal is to quantify how noise affects model accuracy and computational efficiency, with a focus on energy consumption and carbon emissions.
 \newline
 \subsubsection*{1) Data Collection}
+
 \textbf{Datasets:} Use 2-3 boolean-labeled datasets from the Kaggle website \cite{kaggle}. Inject synthetic attribute noise (using Gaussian noise from 0\% to 100\% at 10\% increments) to simulate real-world data corruption.
-\newline
-\newline
+
+\vspace{0.5em}
 \textbf{Algorithms:} 7 supervised classifiers for boolean prediction:
-\begin{itemize}
-    \item Logistic Regression (Baseline)
-    \item Naive Bayes (Baseline)
-    \item Random Forest (Ensemble)
-    \item Gradient Boosting (Ensemble)
-    \item Support Vector Machine (SVM) (Non-linear)
-    \item k-nearest neighbors (KNN) (Non-linear)
-    \item Decision Tree (Non-linear)
-\end{itemize}
+\begin{itemize}[noitemsep, leftmargin=*]
+    \item Logistic Regression
+    \item Naive Bayes
+    \item Random Forest
+    \item Gradient Boosting
+    \item Support Vector Machine
+    \item k-nearest neighbors
+    \item Decision Tree
 
-\begin{figure}[htbp]
-    \centering
+\end{itemize}
+\newline
+
+\newline
+\newline
+\caption{Table 1, created by ourselves, categorizes different machine learning algorithms based on their type: baseline, ensemble, and non-linear. In our classification, Logistic Regression, Naïve Bayes, k-nearest neighbors (KNN), and Decision Tree are identified as baseline models, while Random Forest and Gradient Boosting fall under ensemble methods. Additionally, Support Vector Machine (SVM), k-nearest neighbors (KNN), and Decision Tree are classified as non-linear models in our analysis.}
+\newline
+
+\begin{table}[htbp]
     \includegraphics[width=\linewidth, keepaspectratio]{img.png} % Replace with your image file name -- MAKE SURE img.png EXISTS!
-    \caption{Diagram of the algorithms used for boolean prediction.}
-    \label{fig:algorithms}
-  \end{figure}
-Justification: These represent a gradient of complexity and noise-handling strategies.
+    \caption{}
+    \label{table:algorithms}
+\end{table}
+
+
+
+
+\subsubsection*{Metrics}
 \newline
-\newline
-\textbf{Metrics:}
-\begin{itemize}
-    \item Performance: Accuracy, precision, F1, and recall. These four metrics are chosen because they provide a balanced evaluation of classification performance, especially in cases with imbalanced data. While other metrics like AUC-ROC or MCC exist, these four are widely used, easy to interpret, and effectively capture both overall correctness (accuracy) and the trade-off between false positives and false negatives (precision, recall, and F1 score).
 
-    \item Sustainability: Energy (kWh), CO2e (kg) per training cycle (measured via tools).
+\textbf{Performance:} Accuracy, precision, F1, and recall. These four metrics are chosen because they provide a balanced evaluation of classification performance, especially in cases with imbalanced data. While other metrics like AUC-ROC or MCC exist, these four are widely used, easy to interpret, and effectively capture both overall correctness (accuracy) and the trade-off between false positives and false negatives (precision, recall, and F1 score).\\[0.5em]
+\textbf{Sustainability:} Energy (kWh), CO2e (kg) per training cycle (measured via tools).
 
-\end{itemize}
+\vspace{0.5em}
+\textbf{Controls:}\\
+Fix training parameters (epochs, batch size) across models. Use identical hardware (CPU/GPU) for all experiments (Same Computer).
 
-\textbf{Controls:}
-\begin{itemize}
-    \item Fix training parameters (epochs, batch size) across models.
-
-    \item Use identical hardware (CPU/GPU) for all experiments (Same Computer).
-\end{itemize}
-
-
-
-
+\vspace{0.5em}
 \subsubsection*{2) Data Analysis}
-\textbf{Performance Analysis:}
-\begin{itemize}
-    \item Compare accuracy, F1-score, and recall degradation curves across noise levels.
-\end{itemize}
 
-\textbf{Sustainability Analysis:}
-\begin{itemize}
-    \item Calculate energy per accuracy point to quantify efficiency.
-    \item Rank models by CO2e emissions at equivalent noise levels.
-\end{itemize}
+\textbf{Performance Analysis:}\\
+Compare accuracy, F1-score, and recall degradation curves across noise levels.
 
-\textbf{Trade-off Visualization:}
-\begin{itemize}
-    \item Visualization charts to compare algorithms across noise, accuracy, and energy use (Python).
-    \item Scatter plots showing Energy per Accuracy (EPA) vs. noise tolerance.
-\end{itemize}
+\vspace{0.5em}
+\textbf{Sustainability Analysis:}\\
+Calculate energy per accuracy point to quantify efficiency. Rank models by CO2e emissions at equivalent noise levels.
 
+\vspace{0.5em}
+\textbf{Trade-off Visualization:}\\
+Visualization charts to compare algorithms across noise, accuracy, and energy use (Python). Scatter plots showing Energy per Accuracy (EPA) vs. noise tolerance.
+
+\vspace{0.5em}
 \subsection*{C. Validity Threats}
-\textbf{Internal Validity:}
-\begin{itemize}
-    \item Threat: Hyperparameter tuning could confound energy/performance results.
-    \item Mitigation: Use default or standardized hyperparameters from previous literature for fairness.
-\end{itemize}
 
-\textbf{External Validity:}
-\begin{itemize}
-    \item Threat: Results may not generalize beyond boolean tasks or synthetic noise.
-    \item Mitigation: Validate findings on 2-3 boolean datasets (e.g., medical, financial).
-\end{itemize}
+\textbf{Internal Validity:}\\
+Threat: Hyperparameter tuning could confound energy/performance results. Mitigation: Use default or standardized hyperparameters from previous literature for fairness.
 
-\textbf{Construct Validity:}
-\begin{itemize}
-    \item Threat: Energy measurement tools may not account for hardware-specific fluctuations.
-    \item Mitigation: Replicate experiments on multiple hardware setups (CPU vs. GPU) and then take the average results of the traditional metrics and sustainability outcome.
-\end{itemize}
+\vspace{0.5em}
+\textbf{External Validity:}\\
+Threat: Results may not generalize beyond boolean tasks or synthetic noise. Mitigation: Validate findings on 2-3 boolean datasets (e.g., medical, financial).
+
+\vspace{0.5em}
+\textbf{Construct Validity:}\\
+Threat: Energy measurement tools may not account for hardware-specific fluctuations. Mitigation: Replicate experiments on multiple hardware setups (CPU vs. GPU) and then take the average results of the traditional metrics and sustainability outcome.
+
+
+\textbf{Construct Validity:}\\[0.5em]
+Threat: Energy measurement tools may not account for hardware-specific fluctuations.\\[0.5em]
+Mitigation: Replicate experiments on multiple hardware setups (CPU vs. GPU) and then take the average results of the traditional metrics and sustainability outcome.
+
+
 
 % ---------------------------
 % REFERENCES
