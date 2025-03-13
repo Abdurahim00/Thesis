@@ -67,10 +67,8 @@ And three Sub-Questions:
 
      3. Which algorithm achieves the optimal trade-off between noise robustness and energy efficiency for boolean prediction tasks?
 \end{itemize}
-
-\newline 
 \newline
-
+\par
 This case study is critical because it investigates the impact of different levels of attribute noise on selected ML models by examining both traditional performance metrics (accuracy, recall, F1 score) and sustainability considerations (CO2e emissions, energy consumption). These metrics provide insights into model performance under noisy conditions, while sustainability, regarded as a Non-Functional Requirement (NFR), is assessed through energy consumption and CO2e emissions during training.
 \newline
 \newline
@@ -117,30 +115,31 @@ This study evaluates the effectiveness of modern ML algorithms in handling diffe
 \newline
 Aim: To systematically evaluate how varying levels of attribute noise affect ML models' performance (via traditional metrics) and sustainability (via energy/CO2e measurements).
 
+
 \subsection*{A. Hypotheses}
 
-\newline
-\newline
 \begin{itemize}[noitemsep, leftmargin=*]
 
-    H1: Impact of Attribute Noise on Performance Metrics.
-    \begin{itemize}
-        \item Null Hypothesis: Higher levels of attribute noise do not significantly affect traditional performance metrics in a non-linear manner across models.
-        \item Alternative Hypothesis: Higher levels of attribute noise reduce traditional performance metrics in a non-linear manner across models.
-    \end{itemize}
+    \item \textbf{H1: Impact of Attribute Noise on Performance Metrics}
+    \begin{enumerate}
+        \item \textbf{Null Hypothesis:} Higher levels of attribute noise do not significantly affect traditional performance metrics in a non-linear manner across models.
+        \item \textbf{Alternative Hypothesis:} Higher levels of attribute noise reduce traditional performance metrics in a non-linear manner across models.
+    \end{enumerate}
 
-    H2: Impact of Attribute Noise on Energy Consumption and CO₂e Emissions.
-    \begin{itemize}
-        \item Null Hypothesis: Energy consumption and CO₂e emissions do not increase with noise levels, or the increase is consistent across all algorithm models.
-        \item Alternative Hypothesis: Energy consumption and CO₂e emissions increase with noise levels, but the rate of increase varies across different algorithm models.
-    \end{itemize}
+    \item \textbf{H2: Impact of Attribute Noise on Energy Consumption and CO₂e Emissions}
+    \begin{enumerate}
+        \item \textbf{Null Hypothesis:} Energy consumption and CO₂e emissions do not increase with noise levels, or the increase is consistent across all algorithm models.
+        \item \textbf{Alternative Hypothesis:} Energy consumption and CO₂e emissions increase with noise levels, but the rate of increase varies across different algorithm models.
+    \end{enumerate}
 
-    H3: Relationship Between Noise Robustness and Energy Efficiency
-        \begin{itemize}
-        \item Null Hypothesis: Models with higher noise robustness (less performance degradation) do not exhibit significantly higher energy efficiency.
-        \item Alternative Hypothesis: Models with higher noise robustness (less performance degradation) exhibit higher energy efficiency.
-    \end{itemize}
+    \item \textbf{H3: Relationship Between Noise Robustness and Energy Efficiency}
+    \begin{enumerate}
+        \item \textbf{Null Hypothesis:} Models with higher noise robustness (less performance degradation) do not exhibit significantly higher energy efficiency.
+        \item \textbf{Alternative Hypothesis:} Models with higher noise robustness (less performance degradation) exhibit higher energy efficiency.
+    \end{enumerate}
+
 \end{itemize}
+
 
 \subsection*{B. Research design}
 
