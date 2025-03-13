@@ -67,8 +67,7 @@ And three Sub-Questions:
 
      3. Which algorithm achieves the optimal trade-off between noise robustness and energy efficiency for boolean prediction tasks?
 \end{itemize}
-\newline
-\par
+
 This case study is critical because it investigates the impact of different levels of attribute noise on selected ML models by examining both traditional performance metrics (accuracy, recall, F1 score) and sustainability considerations (CO2e emissions, energy consumption). These metrics provide insights into model performance under noisy conditions, while sustainability, regarded as a Non-Functional Requirement (NFR), is assessed through energy consumption and CO2e emissions during training.
 \newline
 \newline
@@ -103,7 +102,7 @@ Abdulgalil and Abraham \cite{abduljalil} compared five machine learning algorith
 Schooltink \cite{schooltink} compared the Support Vector Classifier (SVC) and Random Forest Classifier (RFC) to attribute noise by testing Gaussian and Mean-Based noise by looking at the mean accuracy and standard deviation. One dataset was used with around 88,500 instances. The Gaussian and Mean-Based noise are approaches to introduce synthetic noise into datasets. Under Gaussian noise, RFC usually has higher accuracy, but experiences a significant drop around 50\% noise, indicated by a larger standard deviation. The gap between the two algorithms' accuracy is notable when the noise is around 40\%. For the Mean based noise, both algorithms perform similarly until about 70\% of noise, after which SVC surpassed RFC. This means that SVC performs better in datasets that have a high level of attribute noise. 
 \newline
 \newline
-Atla, Tada, Sheng, and Singireddy \cite{atla2011} conducted a study comparing how different machine learning algorithms react to attribute noise in datasets, with a primary focus on sensitivity comparisons across different noise levels. The metric that was used to compare the algorithms is accuracy. Naïve Bayes ' algorithm maintained roughly the same accuracy across different noise levels, while Decision Tree, Support Vector Machine, Logistic regression exhibited similar behaviour. Once the noise level exceeded 45\%, these three algorithms performed worse than Naïve Bayes, making Naïve Bayes the most resistant to noise.
+Atla, Tada, Sheng, and Singireddy \cite{atla2011} conducted a study comparing how different machine learning algorithms react to attribute noise in datasets, with a primary focus on sensitivity comparisons across different noise levels. The metric that was used to compare the algorithms is accuracy. Naïve Bayes algorithm maintained roughly the same accuracy across different noise levels, while Decision Tree, Support Vector Machine, Logistic regression exhibited similar behaviour. Once the noise level exceeded 45\%, these three algorithms performed worse than Naïve Bayes, making Naïve Bayes the most resistant to noise.
 \newline
 \newline
 However, although each study addresses an important aspect of noise or sustainability, none provide a comprehensive evaluation that integrates traditional performance (accuracy, recall and F1 score) metrics with sustainability indicators (energy consumption and CO2e emissions) across varying levels of attribute noise, while training the models. This gap underscores the significance and novelty of our proposed research. Our research aims to fill this gap by systematically assessing how different attribute noise levels affect both the effectiveness and the environmental impact of modern machine learning algorithms.
@@ -126,10 +125,10 @@ Aim: To systematically evaluate how varying levels of attribute noise affect ML 
         \item Alternative Hypothesis: Higher levels of attribute noise reduce traditional performance metrics in a non-linear manner across models.
     \end{enumerate}
 
-    \item H2: Impact of Attribute Noise on Energy Consumption and CO₂e Emissions
+    \item H2: Impact of Attribute Noise on Energy Consumption and CO2e Emissions
     \begin{enumerate}
-        \item Null Hypothesis: Energy consumption and CO₂e emissions do not increase with noise levels, or the increase is consistent across all algorithm models.
-        \item Alternative Hypothesis: Energy consumption and CO₂e emissions increase with noise levels, but the rate of increase varies across different algorithm models.
+        \item Null Hypothesis: Energy consumption and CO2e emissions do not increase with noise levels, or the increase is consistent across all algorithm models.
+        \item Alternative Hypothesis: Energy consumption and CO2e emissions increase with noise levels, but the rate of increase varies across different algorithm models.
     \end{enumerate}
 
     \item H3: Relationship Between Noise Robustness and Energy Efficiency
