@@ -67,7 +67,7 @@ And three Sub-Questions:
 
      3. Which algorithm achieves the optimal trade-off between noise robustness and energy efficiency for boolean prediction tasks?
 \end{itemize}
-
+\\[0.5em]
 This case study is critical because it investigates the impact of different levels of attribute noise on selected ML models by examining both traditional performance metrics (accuracy, recall, F1 score) and sustainability considerations (CO2e emissions, energy consumption). These metrics provide insights into model performance under noisy conditions, while sustainability, regarded as a Non-Functional Requirement (NFR), is assessed through energy consumption and CO2e emissions during training.
 \newline
 \newline
@@ -210,9 +210,6 @@ Threat: Hyperparameter tuning could confound energy/performance results. Mitigat
 \textbf{External Validity:}\\
 Threat: Results may not generalize beyond boolean tasks or synthetic noise. Mitigation: Validate findings on 2-3 boolean datasets (e.g., medical, financial).
 
-\vspace{0.5em}
-\textbf{Construct Validity:}\\
-Threat: Energy measurement tools may not account for hardware-specific fluctuations. Mitigation: Replicate experiments on multiple hardware setups (CPU vs. GPU) and then take the average results of the traditional metrics and sustainability outcome.
 
 
 \textbf{Construct Validity:}\\[0.5em]
