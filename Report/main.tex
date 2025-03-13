@@ -67,6 +67,7 @@ And three Sub-Questions:
 
      3. Which algorithm achieves the optimal trade-off between noise robustness and energy efficiency for boolean prediction tasks?
 \end{itemize}
+
 \newline 
 \newline
 
@@ -92,8 +93,6 @@ The research will revise an assumption in the machine learning domain: that mode
 Zhu and Wu \cite{wuzu} provided one of the foundational quantitative studies that clearly differentiated between class noise and attribute noise. Their systematic evaluation demonstrated that attribute noise defined as inconsistencies or errors in the input features can harm a model's performance more severely than class noise. Unlike class noise, which involves incorrect labels that might just mislead the model during training, attribute noise directly corrupts the data that the model learns from. Their study also showed that when the input features are noisy, the model struggles to identify the true patterns in the data, leading to poorer predictions and requiring more effort to learn correctly.\newline
 \newline
 This degradation that attribute noise causes, not only impairs predictive accuracy but also forces models to expend additional computational resources, thereby amplifying energy consumption and environmental impact \cite{wuzu}. Given these substantial repercussions, our research prioritizes attribute noise as a critical factor. By focusing on attribute noise, we aim to bridge the gap between traditional performance metrics and sustainability considerations, underscoring the need for robust, energy efficient machine learning practices in real world, noisy environments.
-
-\newline
 \newline
 \newline
 Building on our discussion of how attribute noise harms both model accuracy and energy efficiency, Chejara et al. \cite{chejara2024impact} provide concrete evidence from real-world settings that reinforces these concerns. Their study, conducted in authentic classroom settings using multimodal learning analytics, demonstrates that attribute noise significantly degrades model performance and reveals substantial differences in which algorithm is chosen under noisy conditions. For example, Chejara et al. \cite{chejara2024impact} report that when the quality of video or audio data is compromised such as when video frames become blurry or audio signals are distorted, the performance of the Support Vector Machine (SVM), a common machine learning model, drops notably. In contrast, another machine learning model, Random Forest, which combines the predictions of many decision trees, was observed to handle these imperfections much more gracefully, with only a marginal decline in performance. This happens because Random Forest builds multiple decision trees on different parts of the data; even if some trees are affected by noise, their errors are balanced out by the others. This clear disparity underscores the importance of selecting ML models addressing attribute noise directly. Our research aims to identify and promote ML models that can reliably handle real-world data imperfections while also minimizing environmental impact.
@@ -123,20 +122,21 @@ Aim: To systematically evaluate how varying levels of attribute noise affect ML 
 \newline
 \newline
 \begin{itemize}[noitemsep, leftmargin=*]
+
     H1: Impact of Attribute Noise on Performance Metrics.
-    \begin{itemize}[noitemsep, leftmargin=*]
+    \begin{itemize}
         \item Null Hypothesis: Higher levels of attribute noise do not significantly affect traditional performance metrics in a non-linear manner across models.
         \item Alternative Hypothesis: Higher levels of attribute noise reduce traditional performance metrics in a non-linear manner across models.
     \end{itemize}
 
     H2: Impact of Attribute Noise on Energy Consumption and CO₂e Emissions.
-    \begin{itemize}[noitemsep, leftmargin=*]
+    \begin{itemize}
         \item Null Hypothesis: Energy consumption and CO₂e emissions do not increase with noise levels, or the increase is consistent across all algorithm models.
         \item Alternative Hypothesis: Energy consumption and CO₂e emissions increase with noise levels, but the rate of increase varies across different algorithm models.
     \end{itemize}
 
     H3: Relationship Between Noise Robustness and Energy Efficiency
-        \begin{itemize}[noitemsep, leftmargin=*]
+        \begin{itemize}
         \item Null Hypothesis: Models with higher noise robustness (less performance degradation) do not exhibit significantly higher energy efficiency.
         \item Alternative Hypothesis: Models with higher noise robustness (less performance degradation) exhibit higher energy efficiency.
     \end{itemize}
