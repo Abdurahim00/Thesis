@@ -21,7 +21,7 @@
 \begin{abstract}
 Machine learning (ML) is widely used in this day and age, but its performance and efficiency heavily depend on data quality. Among different types of noise, attribute noise (errors in input features) can distort learning patterns, increase computational demands, and elevate energy consumption.
 
-This case study proposes an evaluation of how modern machine learning (ML) algorithms handle attribute noise errors in input features while considering both performance and sustainability. We will assess multiple supervised algorithms using traditional evaluation metrics, such as accuracy and F1 score, alongside sustainability indicators, including energy consumption and CO2 emissions.
+This case study proposes an evaluation of how modern machine learning (ML) algorithms handle attribute noise errors in input features while considering both performance and sustainability. We will assess several supervised algorithms using traditional evaluation metrics, such as accuracy and F1 score, alongside sustainability indicators, including energy consumption and CO2e emissions.
     
 The study aims to identify algorithms that maintain strong performance while minimizing environmental impact under varying levels of noise. By integrating sustainability into ML evaluation, this research seeks to provide practical insights for developing efficient, noise-resilient models for ML-enabled systems.
 \end{abstract}
@@ -39,10 +39,10 @@ However, training data often contains irrelevant, inconsistent, or false informa
 Noise is inevitable in data collection, caused by inconsistencies, errors, and uncertainties in the way data is gathered and recorded. It can negatively affect machine learning performance and typically appears as attribute noise or class noise. Attribute noise refers to inconsistencies in input features (e.g., sensor errors, missing values), while class noise involves incorrect labels (e.g., misclassified images) \cite{dataheroes_noise}. 
 \newline
 \newline
-Although both affect accuracy of the output of the ML, class noise mainly misleads the model without significantly increasing computational cost. In contrast, attribute noise disrupts feature patterns, often requiring more training and computational resources \cite{wuzu}. This increased demand elevates energy consumption and CO2 emissions, aligning with Software Engineering (SE) concerns about sustainability, where non-functional requirements such as energy efficiency and environmental impact are critical to system design according to SWEBok v4 \cite[p. 69]{sweb}.
+Although both types of noises affect the accuracy of the output of the ML, class noise mainly misleads the model without significantly increasing computational cost \cite{wuzu}. In contrast, attribute noise disrupts feature patterns, often requiring more training and computational resources \cite{wuzu}. This increased demand elevates energy consumption and CO2 emissions, aligning with Software Engineering (SE) concerns about sustainability, where non-functional requirements such as energy efficiency and environmental impact are critical to system design according to SWEBok v4 \cite[p. 69]{sweb}.
 \newline
 \newline
-Due to the challenges associated with different testing and evaluation methods for algorithms under multiple types of noise, we decided to narrow the scope and focus solely on attribute noise. Our research focuses only on attribute noise because it degrades model accuracy, efficiency, and sustainability. These inconsistencies can have significant real-world consequences, as seen in a well-known example from 2015, when Google Photos mistakenly labeled images of Black individuals as "gorillas" \cite{guardian2015}. This accuracy error stemmed from imbalanced training data, where the system was exposed to more images of light-skinned individuals than darker-skinned ones. Such cases highlight the risks of attribute noise in real-world applications and reinforce the need for robust data quality measures in machine learning models.
+Our research focuses solely on attribute noise because, unlike class noise that mainly misleads the model without raising computational cost, attribute noise breaks feature patterns and needs more training and resources, which increases energy use and CO2 emissions and harms model accuracy, efficiency, and sustainability. These inconsistencies can have significant real-world consequences, as seen in a well-known example from 2015, when Google Photos mistakenly labeled images of Black individuals as "gorillas" \cite{guardian2015}. This accuracy error stemmed from imbalanced training data, where the system was exposed to more images of light-skinned individuals than darker-skinned ones. Such cases highlight the risks of attribute noise in real-world applications and reinforce the need for robust data quality measures in machine learning models.
 \newline
 \newline
 Beyond degrading accuracy, noise also increases computational inefficiencies. Models exposed to noisy data often require longer training times, more iterations, and additional computing power to reach acceptable performance levels. This leads to higher energy consumption, amplifying the carbon footprint of machine learning applications \cite{sciencedirect}.
@@ -59,32 +59,35 @@ How do varying levels of attribute noise affect the performance and sustainabili
 \newline
 And three Sub-Questions:
 \begin{itemize}
-     1. Do simpler models (e.g., Logistic Regression) degrade differently under noise compared to complex models?
+     1. Do simpler models (e.g., Logistic Regression) degrade differently under noise compared to more complex models?
      \newline
 
-     2. How does attribute noise influence energy consumption and CO2e emissions during model training for boolean classification?
+     2. How does attribute noise influence energy consumption and CO2e emissions during model training for boolean prediction tasks?
      \newline
 
-     3. Which algorithm achieves the optimal trade-off between noise robustness and energy efficiency for boolean outcomes?
+     3. Which algorithm achieves the optimal trade-off between noise robustness and energy efficiency for boolean prediction tasks?
 \end{itemize}
 \newline 
 \newline
-This case study is critical because complex models often require substantial computational resources, and noise can increase resource utilization. By integrating both Traditional (eg. accuracy, recall, and F1 score) and Sustainability metrics (CO2e and energy consumption), this research aims to offer a comprehensive understanding of the trade-offs involved when noisy data is present in ML training processes. This shift towards sustainability is becoming more evident as companies across various industries adopt eco-friendly practices, not only to protect the environment but also to reduce costs \cite{ey_ai_sustainability}. The increasing expenses of training machine learning (ML) models have made energy efficiency an important factor in AI development. Reports from Bain and EY emphasize the need to integrate sustainability into AI strategies, showing how energy-saving approaches can lower both costs and environmental impact \cite{bain_ai_sustainability}. 
+
+This case study is critical because it investigates the impact of different levels of attribute noise on selected ML models by examining both traditional performance metrics (accuracy, recall, F1 score) and sustainability considerations (CO2e emissions, energy consumption). These metrics provide insights into model performance under noisy conditions, while sustainability, regarded as a Non-Functional Requirement (NFR), is assessed through energy consumption and CO2e emissions during training.
 \newline
 \newline
-The purpose of this study is to investigate the impact of different levels of attribute noise on selected ML models, by examining both traditional evaluation metrics and sustainability considerations. These metrics provide insights into how a model performs in the presence of noise. In parallel, sustainability, regarded as a Non-Functional Requirement (NFR), is assessed by measuring energy consumption and CO2e emissions during training.
+
+The shift towards sustainability is becoming more evident as companies across various industries adopt eco-friendly practices, not only to protect the environment but also to reduce costs \cite{ey_ai_sustainability}. The increasing expenses of training machine learning (ML) models have made energy efficiency an important factor in AI development. Reports from Bain and EY emphasize the need to integrate sustainability into AI strategies, showing how energy-saving approaches can lower both costs and environmental impact \cite{bain_ai_sustainability}. 
 \newline
 \newline
+
 The findings will provide insights into ML model selection to optimize energy use and reduce emissions. Consequently, this research will help machine learning engineers and researchers in AI-driven companies \& research institutions to assess which algorithms perform reliably on noisy, real-world data while promoting sustainable AI development.
 \newline
 \newline
-The research will revise an assumption in the machine learning domain: that model selection is primarily based on traditional evaluation metrics such as accuracy and F1-score.  By demonstrating that environmental metrics (e.g., CO2 emissions) must be integrated alongside the traditional criteria, this study redefines what constitutes an effective algorithm. In addition, this research extends the knowledge because it is linking the chosen algorithms to CO2e emissions, thereby establishing a sustainability consideration for evaluating noise-resistant models. From an SE perspective, this aligns with long-term organizational demands, such as minimizing redundant computational work and optimizing resource allocation to reduce environmental and economic waste \cite[pp. 290-291]{sweb}.
+The research will revise an assumption in the machine learning domain: that model selection is primarily based on traditional evaluation metrics such as accuracy and F1-score. By demonstrating that environmental metrics (e.g., CO2e emissions) must be integrated alongside the traditional criteria, this study broadens the understanding of what constitutes an effective algorithm. In addition, this research extends the knowledge because it is linking the chosen algorithms to CO2e emissions, thereby establishing a sustainability consideration for evaluating noise-resistant models. From an SE perspective, this aligns with long-term organizational demands, such as minimizing redundant computational work and optimizing resource allocation to reduce environmental and economic waste \cite[pp. 290-291]{sweb}.
 
 % ---------------------------
 % II. RELATED WORK
 % ---------------------------
 \section*{II. RELATED WORK}
-\subsubsection*{Background} The world is becoming smarter everyday, a big part of this is the increasing dependency on machine learning across multiple fields, allowing the rapid development of many ML models \cite{bain_ai_sustainability}. When training ML models, data imperfections like noise (e.g., errors, missing values, or inconsistencies) can disrupt learning and degrade predictions \cite{sciencedirect_noise}. Attribute noise, such as sensor errors or irrelevant feature variations, is particularly problematic as it distorts input patterns, increasing computational demands [12]. Different machine learning algorithms exhibit varying levels of robustness against noisy data, and their ability to generalize effectively under such conditions is crucial. To assess and compare the performance of these algorithms, widely used evaluation metrics such as accuracy, recall, and F1 score provide insights into their predictive capabilities. However, beyond traditional performance measures, there is a growing need to consider sustainability factors in ML. As model complexity and computational costs rise, so does the environmental impact of training and deploying these systems. 
+\subsubsection*{Background} The world is becoming more advanced everyday, a part of this is the increasing dependency on machine learning across multiple fields, allowing the rapid development of many ML models \cite{bain_ai_sustainability}. When training ML models, data imperfections like noise (e.g., errors, missing values, or inconsistencies) can disrupt learning and degrade predictions \cite{sciencedirect_noise}. Attribute noise, such as sensor errors or irrelevant feature variations, is particularly problematic as it distorts input patterns, which in result, increases computational demands [12]. Different machine learning algorithms exhibit varying levels of robustness against noisy data, and their ability to generalize effectively under such conditions is crucial. To assess and compare the performance of these algorithms, widely used evaluation metrics such as accuracy, recall, and F1 score provide insights into their predictive capabilities. However, beyond traditional performance measures, there is a growing need to consider sustainability factors in ML. As model complexity and computational costs rise, so does the environmental impact of training and deploying these systems. 
 \newline
 \newline
 \subsubsection*{Attribute noise}
@@ -122,13 +125,27 @@ Aim: To systematically evaluate how varying levels of attribute noise affect ML 
 \newline
 \newline
 \begin{itemize}[noitemsep, leftmargin=*]
-    H1: Higher attribute noise levels will reduce traditional performance metrics non-linearly across models.
-    \newline
+    H1: Impact of Attribute Noise on Performance Metrics.
+    \begin{itemize}[noitemsep, leftmargin=*]
 
-    H2: Energy consumption and CO2e emissions will increase with noise levels, but the rate will vary by each algorithm model.
-    \newline
+    \item Null Hypothesis: Higher levels of attribute noise do not significantly affect traditional performance metrics in a non-linear manner across models.
+    \item Alternative Hypothesis: Higher levels of attribute noise reduce traditional performance metrics in a non-linear manner across models.
+    
+    \end{itemize}
 
-    H3: Models with higher noise robustness (smaller performance degradation) will exhibit higher energy efficiency.
+    H2: Impact of Attribute Noise on Energy Consumption and CO₂e Emissions.
+    \begin{itemize}[noitemsep, leftmargin=*]
+
+    \item Null Hypothesis: Energy consumption and CO₂e emissions do not increase with noise levels, or the increase is consistent across all algorithm models.
+    \item Alternative Hypothesis: Energy consumption and CO₂e emissions increase with noise levels, but the rate of increase varies across different algorithm models.
+    
+    \end{itemize}
+
+    H3: Relationship Between Noise Robustness and Energy Efficiency
+    \begin{itemize}[noitemsep, leftmargin=*]
+    \item Null Hypothesis: Models with higher noise robustness (less performance degradation) do not exhibit significantly higher energy efficiency.
+    \item Alternative Hypothesis: Models with higher noise robustness (less performance degradation) exhibit higher energy efficiency.
+    \end{itemize}
 \end{itemize}
 
 \subsection*{B. Research design}
