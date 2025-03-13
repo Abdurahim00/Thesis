@@ -42,7 +42,7 @@ Noise is inevitable in data collection, caused by inconsistencies, errors, and u
 Although both affect accuracy of the output of the ML, class noise mainly misleads the model without significantly increasing computational cost. In contrast, attribute noise disrupts feature patterns, often requiring more training and computational resources \cite{wuzu}. This increased demand elevates energy consumption and CO2 emissions, aligning with Software Engineering (SE) concerns about sustainability, where non-functional requirements such as energy efficiency and environmental impact are critical to system design according to SWEBok v4 \cite[p. 69]{sweb}.
 \newline
 \newline
-Due to the challenges associated with different testing and evaluation methods for algorithms under multiple types of noise, we decided to narrow the scope and focus solely on attribute noise. Our research focuses only on attribute noise because it degrades model accuracy, efficiency, and sustainability. These inconsistencies can have significant real-world consequences, as seen in a well-known example from 2015, when Google Photos mistakenly labeled images of Black individuals as 'gorillas' \cite{guardian2015}. This accuracy error stemmed from imbalanced training data, where the system was exposed to more images of light-skinned individuals than darker-skinned ones. Such cases highlight the risks of attribute noise in real-world applications and reinforce the need for robust data quality measures in machine learning models.
+Due to the challenges associated with different testing and evaluation methods for algorithms under multiple types of noise, we decided to narrow the scope and focus solely on attribute noise. Our research focuses only on attribute noise because it degrades model accuracy, efficiency, and sustainability. These inconsistencies can have significant real-world consequences, as seen in a well-known example from 2015, when Google Photos mistakenly labeled images of Black individuals as "gorillas" \cite{guardian2015}. This accuracy error stemmed from imbalanced training data, where the system was exposed to more images of light-skinned individuals than darker-skinned ones. Such cases highlight the risks of attribute noise in real-world applications and reinforce the need for robust data quality measures in machine learning models.
 \newline
 \newline
 Beyond degrading accuracy, noise also increases computational inefficiencies. Models exposed to noisy data often require longer training times, more iterations, and additional computing power to reach acceptable performance levels. This leads to higher energy consumption, amplifying the carbon footprint of machine learning applications \cite{sciencedirect}.
@@ -53,6 +53,7 @@ Thus, it is imperative to not only consider the traditional metrics, rather also
 \newline 
 \newline
 To address this gap, this study investigates the impact of attribute noise on both performance and sustainability in modern machine learning algorithms. Specifically, we aim to answer the following main research question:
+\newline
 How do varying levels of attribute noise affect the performance and sustainability of supervised learning algorithms when evaluated on boolean prediction tasks?
 \newline
 \newline
